@@ -25,7 +25,21 @@ enum TokenType {
 };
 
 class Token {
-private:
+public:
+    Token(TokenType tokenType, std::string tokenValue, int lineNumber)
+        : type(tokenType), value(std::move(tokenValue)), line(lineNumber) {}
+
+    [[nodiscard]] std::string toString() const {
+        std::stringstream out;
+        out << "(" << typeName() << "," << "\"" << value << "\"" << "," << line << ")";
+        return out.str();
+    }
+
+    [[nodiscard]] TokenType getType() const {
+        return type;
+    }
+
+protected:
     TokenType type;
     std::string value;
     int line;
@@ -73,17 +87,4 @@ private:
         }
     }
 
-public:
-    Token(TokenType tokenType, std::string tokenValue, int lineNumber)
-        : type(tokenType), value(std::move(tokenValue)), line(lineNumber) {}
-
-    [[nodiscard]] std::string toString() const {
-        std::stringstream out;
-        out << "(" << typeName() << "," << "\"" << value << "\"" << "," << line << ")";
-        return out.str();
-    }
-
-    [[nodiscard]] TokenType getType() const {
-        return type;
-    }
 };

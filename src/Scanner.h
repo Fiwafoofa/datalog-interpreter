@@ -7,6 +7,61 @@
 #include <functional>
 
 class Scanner {
+public:
+    explicit Scanner(std::string input) : input(std::move(input)) {}
+
+    /**
+     * @brief Scans the next token in the provided input string
+     * @return The next token: a token object
+    */
+    Token scanToken() {
+        // Remove whitespice and potentially reach end of file
+        removeWhiteSpace();
+        if (index == input.size()) {
+            return {EOFile, "", lineNumber};
+        }
+        // Check and return any single charracter tokens
+        if (Token token = getSingleCharacterTokens(); token.getType() != UNDEFINED) {
+            return token;
+        }
+        // Check for colon and colon-dash
+        if (currCharacter == ':') {
+            return getColonOrColonDash();
+        }
+        // Handle IDs, Queries, Schemes, etc.
+        if (isalpha(currCharacter)) {
+            return getWordRelatedToken();
+        }
+        // Handle string
+        if (currCharacter == '\'') {
+            return readString();
+        }
+        // Handle comment
+        if (currCharacter == '#') {
+            return {COMMENT, readComment(), lineNumber};
+        }
+        // Handle undefined
+        std::string undefinedValue(1, currCharacter);
+        return {UNDEFINED, undefinedValue, lineNumber};
+    }
+
+    /**
+     * @brief Gets all the tokens from the provided fileName and returns a list 
+     * of Token objects
+     * @param fileName The fileName to scan tokens from
+     * @return A list of Token objects
+    */
+    static std::list<Token> getTokensFromFile(const std::string& fileName) {
+        Scanner scanner = Scanner(getFileContents(fileName));
+        std::list<Token> tokens;
+        while (true) {
+            Token t = scanner.scanToken();
+            tokens.push_back(t);
+            if (t.getType() == EOFile) break;
+        }
+        return tokens;
+    }
+
 private:
     std::string input;
     int lineNumber = 1;
@@ -135,59 +190,5 @@ private:
         TokenType tokenType = getTokenTypeFromWord(word);
         return {tokenType, word, lineNumber};
     }
-
-public:
-    explicit Scanner(std::string input) : input(std::move(input)) {}
-
-    /**
-     * @brief Scans the next token in the provided input string
-     * @return The next token: a token object
-    */
-    Token scanToken() {
-        // Remove whitespice and potentially reach end of file
-        removeWhiteSpace();
-        if (index == input.size()) {
-            return {EOFile, "", lineNumber};
-        }
-        // Check and return any single charracter tokens
-        if (Token token = getSingleCharacterTokens(); token.getType() != UNDEFINED) {
-            return token;
-        }
-        // Check for colon and colon-dash
-        if (currCharacter == ':') {
-            return getColonOrColonDash();
-        }
-        // Handle IDs, Queries, Schemes, etc.
-        if (isalpha(currCharacter)) {
-            return getWordRelatedToken();
-        }
-        // Handle string
-        if (currCharacter == '\'') {
-            return readString();
-        }
-        // Handle comment
-        if (currCharacter == '#') {
-            return {COMMENT, readComment(), lineNumber};
-        }
-        // Handle undefined
-        std::string undefinedValue(1, currCharacter);
-        return {UNDEFINED, undefinedValue, lineNumber};
-    }
-
-    /**
-     * @brief Gets all the tokens from the provided fileName and returns a list 
-     * of Token objects
-     * @param fileName The fileName to scan tokens from
-     * @return A list of Token objects
-    */
-    static std::list<Token> getTokensFromFile(const std::string& fileName) {
-        Scanner scanner = Scanner(getFileContents(fileName));
-        std::list<Token> tokens;
-        while (true) {
-            Token t = scanner.scanToken();
-            tokens.push_back(t);
-            if (t.getType() == EOFile) break;
-        }
-        return tokens;
-    }
+    
 };
