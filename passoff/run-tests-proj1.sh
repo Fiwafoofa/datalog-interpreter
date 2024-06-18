@@ -2,8 +2,6 @@
 
 # script for project 1 pass-off tests
 
-program="project1"
-
 buckets="20 40 60 80 100"
 
 numbers_20="21 22 23"
@@ -12,10 +10,11 @@ numbers_60="61 62"
 numbers_80="81 82"
 numbers_100="101 102"
 
-testdir="project1-passoff" # FIXME
+testdir="project1-passoff"
+program="$testdir/datalog_interpreter"
 diffopts=" -a -i -b -w -B "  # ignore whitespace
 
-g++ -Wall -std=c++17 -g *.cpp -o $program
+# g++ -Wall -std=c++17 -g *.cpp -o $program
 
 for bucket in $buckets ; do
 
@@ -39,5 +38,5 @@ for bucket in $buckets ; do
     done
 done
 
-rm $program
+# rm $program
 
