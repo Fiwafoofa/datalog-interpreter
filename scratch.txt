@@ -1,6 +1,12 @@
-
+someid
 ,
 .
 ?
 *
 .
+awdanotherid
+Facts
+Queries
+
+Rules
+Schemes

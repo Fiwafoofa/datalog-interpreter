@@ -1,3 +1,0 @@
-C:/Users/isaih/cs/old/cs236/datalog-interpreter/cmake-build-debug/CMakeFiles/datalog_interpreter.dir
-C:/Users/isaih/cs/old/cs236/datalog-interpreter/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/isaih/cs/old/cs236/datalog-interpreter/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -37,7 +37,7 @@ private:
             case PERIOD:
                 return "PERIOD";
             case Q_MARK:
-                return "Q_MARL";
+                return "Q_MARK";
             case LEFT_PAREN:
                 return "LEFT_PAREN";
             case RIGHT_PAREN:
@@ -59,7 +59,11 @@ private:
             case QUERIES:
                 return "Queries";
             case EOFile:
-                return "EOF";
+                return "END";
+            case ID:
+                return "ID";
+            case COMMENT:
+                return "COMMENT";
             default:
                 return value;
         }

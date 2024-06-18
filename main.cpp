@@ -3,7 +3,7 @@
 #include "Token.h"
 #include "Scanner.h"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {    
     if (argc < 2) {
         std::cout << "./exe filename.txt" << std::endl;
         return -1;
@@ -14,6 +14,6 @@ int main(int argc, char* argv[]) {
     for (const Token& token : tokens) {
         std::cout << token.toString() << std::endl;
     }
-
+    std::cout << "Total Tokens = " << tokens.size() << std::endl;
     return 0;
 }
