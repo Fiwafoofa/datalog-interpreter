@@ -1,0 +1,15 @@
+# ninja log v5
+0	766	7394253479892349	CMakeFiles/datalog_interpreter.dir/main.cpp.obj	5ebfbe1962f6bb81
+771	1191	7394253484074608	datalog_interpreter.exe	1ffa6452b15b8145
+3	881	7394276918322583	CMakeFiles/datalog_interpreter.dir/main.cpp.obj	5ebfbe1962f6bb81
+884	1195	7394276921456265	datalog_interpreter.exe	1ffa6452b15b8145
+4	813	7394277092282194	CMakeFiles/datalog_interpreter.dir/main.cpp.obj	5ebfbe1962f6bb81
+816	1220	7394277096321581	datalog_interpreter.exe	1ffa6452b15b8145
+4	1029	7394283688106665	CMakeFiles/datalog_interpreter.dir/main.cpp.obj	5ebfbe1962f6bb81
+1033	1468	7394283692562890	datalog_interpreter.exe	1ffa6452b15b8145
+3	905	7394283863073458	CMakeFiles/datalog_interpreter.dir/main.cpp.obj	5ebfbe1962f6bb81
+908	1262	7394283866640665	datalog_interpreter.exe	1ffa6452b15b8145
+3	833	7394284720455197	CMakeFiles/datalog_interpreter.dir/main.cpp.obj	5ebfbe1962f6bb81
+836	1261	7394284724714443	datalog_interpreter.exe	1ffa6452b15b8145
+4	869	7394285668048737	CMakeFiles/datalog_interpreter.dir/main.cpp.obj	5ebfbe1962f6bb81
+873	1253	7394285671874512	datalog_interpreter.exe	1ffa6452b15b8145
