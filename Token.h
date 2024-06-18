@@ -64,6 +64,10 @@ private:
                 return "ID";
             case COMMENT:
                 return "COMMENT";
+            case UNDEFINED:
+                return "UNDEFINED";
+            case STRING:
+                return "STRING";
             default:
                 return value;
         }
