@@ -1,7 +1,9 @@
+#pragma once
 #include <iostream>
 #include <list>
 #include "Token.h"
 #include "DatalogProgram.h"
+#include "Scanner.h"
 
 class Parser {
 public:
@@ -37,7 +39,8 @@ public:
         return token.getType() == COMMENT;
     }
 
-    static DatalogProgram parse(const std::list<Token>& tokens) {
+    static DatalogProgram parse(const std::string& fileName) {
+        std::list<Token> tokens = Scanner::getTokensFromFile(fileName);
         std::list<Token> filteredTokens;
         for (const Token& token : tokens) {
             if (token.getType() != COMMENT) {

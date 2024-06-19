@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include "Token.h"
 
-class Parameter : private Token {
+class Parameter : public Token {
 
 public:
     Parameter(TokenType tokenType, std::string tokenValue, int lineNumber) : Token(validateTokenType(tokenType), tokenValue, lineNumber) {}

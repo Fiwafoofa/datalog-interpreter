@@ -1,3 +1,4 @@
+#pragma once
 #include <sstream>
 #include <string>
 #include <vector>
@@ -27,6 +28,26 @@ public:
 
     void addToDomains(std::string domain) {
         domains.insert(domain);
+    }
+
+    std::vector<Predicate> getSchemes() const {
+        return schemes;
+    }
+
+    std::vector<Predicate> getFacts() const {
+        return facts;
+    }
+
+    std::vector<Rule> getRules() const {
+        return rules;
+    }
+
+    std::vector<Predicate> getQueries() const {
+        return queries;
+    }
+
+    std::set<std::string> getDomains() const {
+        return domains;
     }
 
     std::string toString() const {
