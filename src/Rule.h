@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include <sstream>
 #include <string>
@@ -6,7 +7,18 @@
 
 class Rule {
 public:
+
+    Rule() {}
+
     Rule(Predicate headPredicate) : headPredicate(headPredicate) {}
+
+    void setHeadPredicate(Predicate predicate) {
+        headPredicate = predicate;
+    }
+
+    void addToPredicateList(Predicate predicate) {
+        predicates.push_back(predicate);
+    }
 
     std::string toString() const {
         std::stringstream ss;
@@ -17,13 +29,10 @@ public:
                 ss << ',';
             }
         }
-        ss << '.';
         return ss.str();
     }
 
-
 private:
-
     Predicate headPredicate;
     std::vector<Predicate> predicates = std::vector<Predicate>();
 

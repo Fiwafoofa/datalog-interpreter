@@ -2,3 +2,5 @@
 .vscode
 build/
 CMakeFiles/
+datalog_interpreter
+.DS_Store

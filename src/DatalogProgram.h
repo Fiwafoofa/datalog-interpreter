@@ -25,36 +25,39 @@ public:
         queries.push_back(query);
     }
 
+    void addToDomains(std::string domain) {
+        domains.insert(domain);
+    }
+
     std::string toString() const {
         std::stringstream ss;
         ss << "Schemes(" << schemes.size() << "):\n";
         for (const Predicate& scheme : schemes) {
             ss << "  " << scheme.toString() << '\n';
         }
-        ss << "\nFacts(" << facts.size() << "):\n";
+        ss << "Facts(" << facts.size() << "):\n";
         for (const Predicate& fact : facts) {
             ss << "  " << fact.toString() << ".\n";
         }
-        ss << "\nRules(" << rules.size() << "):\n";
+        ss << "Rules(" << rules.size() << "):\n";
         for (const Rule& rule : rules) {
             ss << "  " << rule.toString() << ".\n";
         }
-        ss << "\nQueries(" << queries.size() << "):\n";
+        ss << "Queries(" << queries.size() << "):\n";
         for (const Predicate& query : queries) {
             ss << "  " << query.toString() << "?\n";
         }
-        ss << "\nDomain(" << domains.size() << "):\n";
-        for (const Parameter& domain : domains) {
-            ss << "  " << domain.toString() << '\n';
+        ss << "Domain(" << domains.size() << "):\n";
+        for (const std::string& domain : domains) {
+            ss << "  " << domain << '\n';
         }
         return ss.str();
     }
-
 
 private:
     std::vector<Predicate> schemes;
     std::vector<Predicate> facts;
     std::vector<Rule> rules;
     std::vector<Predicate> queries;
-    std::set<Parameter> domains;
+    std::set<std::string> domains;
 };

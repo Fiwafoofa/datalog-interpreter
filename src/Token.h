@@ -26,6 +26,9 @@ enum TokenType {
 
 class Token {
 public:
+
+    Token() {}
+
     Token(TokenType tokenType, std::string tokenValue, int lineNumber)
         : type(tokenType), value(std::move(tokenValue)), line(lineNumber) {}
 
@@ -37,6 +40,14 @@ public:
 
     [[nodiscard]] TokenType getType() const {
         return type;
+    }
+
+    [[nodiscard]] std::string getTokenValue() const {
+        return value;
+    }
+
+    [[nodiscard]] int getLineNumber() const {
+        return line;
     }
 
 protected:
@@ -73,7 +84,7 @@ protected:
             case QUERIES:
                 return "Queries";
             case EOFile:
-                return "END";
+                return "EOF";
             case ID:
                 return "ID";
             case COMMENT:

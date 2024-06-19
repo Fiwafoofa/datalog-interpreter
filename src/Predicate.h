@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <sstream>
 #include <vector>
@@ -6,14 +7,18 @@
 class Predicate {
 public:
 
-    Predicate(std::string name) : name(name) {}
+    Predicate() {}
 
-    void addParameter(Parameter parameter) {
-        parameters.push_back(parameter);
+    void setName(std::string newName) {
+        name = newName;
     }
 
     std::string getName() const {
         return name;
+    }
+
+    void addParameter(Parameter parameter) {
+        parameters.push_back(parameter);
     }
 
     std::vector<Parameter> getParameters() const {
